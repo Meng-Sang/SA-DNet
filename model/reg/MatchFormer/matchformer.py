@@ -1,4 +1,3 @@
-import cv2
 import torch
 import torch.nn as nn
 from .backbone import build_backbone

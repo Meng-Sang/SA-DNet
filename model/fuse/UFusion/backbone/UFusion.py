@@ -6,8 +6,6 @@
 @FileName :gen.py
 @Software :PyCharm
 """
-import time
-
 import cv2
 import numpy as np
 
