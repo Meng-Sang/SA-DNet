@@ -9,9 +9,10 @@ from einops.einops import rearrange
 
 class MatchFormer(nn.Module):
 
-    def __init__(self, config):
+    def __init__(self, config, device):
         super().__init__()
         # Misc
+        self.device = device
         self.config = config
         self.backbone = build_backbone()
         self.coarse_matching = CoarseMatching(config['matchformer']['match_coarse'])
@@ -19,8 +20,8 @@ class MatchFormer(nn.Module):
         self.fine_matching = FineMatching()
 
     def preprocess(self, ir_image, vi_image):
-        vi_image_tensor = torch.from_numpy(vi_image)[None][None].cuda() / 255.
-        ir_image_tensor = torch.from_numpy(ir_image)[None][None].cuda() / 255.
+        vi_image_tensor = torch.from_numpy(vi_image)[None][None].to(self.device) / 255.
+        ir_image_tensor = torch.from_numpy(ir_image)[None][None].to(self.device) / 255.
         batch = {'image0': ir_image_tensor, 'image1': vi_image_tensor, 'i': 1}
         return batch
 

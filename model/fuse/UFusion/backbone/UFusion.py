@@ -51,8 +51,9 @@ def get_sn_conv(in_ch, out_ch, kernel_size=3, stride=1, bias=True, fast=True):
 
 
 class UFusion(nn.Module):
-    def __init__(self):
+    def __init__(self, device):
         super(UFusion, self).__init__()
+        self.device = device
         self.pad = nn.ReflectionPad2d(1)
         self.leaky_relu = nn.LeakyReLU(0.2)
 
@@ -93,8 +94,7 @@ class UFusion(nn.Module):
             else:
                 nn.init.trunc_normal_(p, std=1e-3)
 
-    @staticmethod
-    def pre_process(ir_imgs, vi_imgs):
+    def pre_process(self, ir_imgs, vi_imgs):
         padding = 1
         sub_ir_sequence = []
         sub_vi_sequence = []
@@ -117,8 +117,8 @@ class UFusion(nn.Module):
 
         train_data_ir = train_data_ir.transpose([0, 3, 1, 2])
         train_data_vi = train_data_vi.transpose([0, 3, 1, 2])
-        train_data_ir = torch.tensor(train_data_ir).float().cuda()
-        train_data_vi = torch.tensor(train_data_vi).float().cuda()
+        train_data_ir = torch.tensor(train_data_ir).float().to(self.device)
+        train_data_vi = torch.tensor(train_data_vi).float().to(self.device)
 
         return train_data_ir, train_data_vi
 
