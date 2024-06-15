@@ -127,8 +127,9 @@ def make_matching_plot(image0, image1, kpts0, kpts1, mkpts0, mkpts1,
     fig.text(
         0.01, 0.01, '\n'.join(small_text), transform=fig.axes[0].transAxes,
         fontsize=5, va='bottom', ha='left', color=txt_color)
-
-    return np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    plt.savefig(str(path), bbox_inches='tight', pad_inches=0)
+    plt.close()
+    return cv2.imread(path)
 
 
 def plot_matches(kpts0, kpts1, color, lw=1.5, ps=4):

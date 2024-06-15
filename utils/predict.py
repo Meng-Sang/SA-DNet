@@ -32,7 +32,7 @@ def sa_dnet(ir_image, vi_image, text, reg=LazyMatchFormer(), fuse=LazyUFusion(),
     if is_fig_match:
         match_image = make_matching_plot(
             resize_ir_image, resize_vi_image, ir_mkpst, vi_mkpst, ir_mkpst, vi_mkpst,
-            ["#86FC14" for i in range(ir_mkpst.shape[0])], "", path=None)
+            ["#86FC14" for i in range(ir_mkpst.shape[0])], "", path="assets/tmp.jpg")
     fuse_image = cv2.merge((fuse_image, resize_vi_Cr, resize_vi_Cb))
     bgr_fuse_image = cv2.cvtColor(fuse_image, cv2.COLOR_YCrCb2BGR)
     return match_image, bgr_fuse_image
