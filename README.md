@@ -111,7 +111,7 @@ cv2.imwrite("assets/demo.jpg", fuse_image)
       <br>Mask Fuse Image (Car)
     </td>
   </tr>
-</table>)
+</table>
 </div>
 
 
