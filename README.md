@@ -8,13 +8,6 @@ SA-DNet is  an end-to-end Semantic-Aware on-Demand registration-fusion network. 
 ###### Note:
 In this project, the HOL operators in reg have not been implemented. When SAM perceives regions that are too large, it leads to excessive computation in HOL, causing the system to freeze.
 
-
-### TODO
-* Fixed bug.
-* Update the new sam, reg, and fuse modules.
-* To optimize and implement the HOL operator
-
-
 ### Install
 #### Download this project:
 ```shell
@@ -121,3 +114,17 @@ cv2.imwrite("assets/demo.jpg", fuse_image)
 This project depends on the following repositories:
 * [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO)
 * [Segment Anything](https://github.com/facebookresearch/segment-anything)
+
+### Citation:
+If you find our work helpful for your research, please consider citing the following BibTeX entry
+```
+@article{sang2025end,
+  title={An end-to-end semantic-guided infrared and visible registration-fusion network for advanced visual tasks},
+  author={Sang, Meng and Xie, Housheng and Meng, Jingrui and Zhang, Yukuan and Qiu, Junhui and Zhao, Shan and Yang, Yang},
+  journal={Engineering Applications of Artificial Intelligence},
+  volume={149},
+  pages={110489},
+  year={2025},
+  publisher={Elsevier}
+}
+```
